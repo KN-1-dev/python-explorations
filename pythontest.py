@@ -73,3 +73,7 @@ while True:
         if pchoice == 'n': # if n is entered the game ends
             print("The game has ended :)")
             break
+
+
+
+        
