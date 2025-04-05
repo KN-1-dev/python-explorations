@@ -7,7 +7,8 @@
 # display the player's score and go to the next player 
 # if the player enters the letter 'y' or 'n' and then types anything else dont consider it and ask him to enter again , same is he doesn't enter either 'y' or 'n' -->extra feature
 # After all the players are done display the scores of all the players and state the player who won --> extra feature
-
+# Input the names of the players:
+# Display the current score of the player after every roll
 import random
 
 def gameTime():
@@ -76,4 +77,3 @@ while True:
 
 
 
-        
