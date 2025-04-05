@@ -9,6 +9,7 @@
 # After all the players are done display the scores of all the players and state the player who won --> extra feature
 # Input the names of the players:
 # Display the current score of the player after every roll
+# Make it unbeatable for particular cases
 import random
 
 def gameTime():
