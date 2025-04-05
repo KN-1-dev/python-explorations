@@ -29,3 +29,5 @@ def startGame(player: list, rounds: int):
     for r in range(1,rounds+1):
         for p in range(1,players+1):
             
+
+# 
