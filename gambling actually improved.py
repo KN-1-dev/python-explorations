@@ -24,8 +24,9 @@ class Player:
 
 def startGame(player: list, rounds: int):
     players = len(player) # number of players
-    player
-    random.shuffle(player[1:]) # shuffle the players
+    playerT = player[1:]
+    random.shuffle(playerT) # shuffle the players
+    player = [None]+playerT
     for r in range(1,rounds+1):
         for p in range(1,players+1):
             
