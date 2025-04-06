@@ -61,6 +61,10 @@ def start():
         for p in player[1:]:
             playTurnOf(p)
 
+"""
+---------------------------main/logic---------------------------------------
+"""
+
 rounds = int(input("Enter number of rounds: "))
 assert rounds in range(1,11), "Rounds should be between 1 and 10"
 
