@@ -22,7 +22,8 @@ d = {}
 pchoice = ''
 score = 0
 pcount = 0
-
+pnames = []
+pname  = ''
 # Outer loop if the players want to play another round
 while True:
     while True:
@@ -30,7 +31,10 @@ while True:
         print("Enter the number of players: ")
         nplayers = int(input())
         for i in range(nplayers):
-            d[i] = 0
+            print(f'Enter player {i} name : ', end = '')
+            pname = input()
+            pnames.append(pname)
+            d[pnames[i]] = 0
         break
     for _ in range(nplayers):
         # below is for a single player's turn
@@ -44,28 +48,28 @@ while True:
                 score = gameTime()
                 if score == 1: # If 1 is rolled the player is eliminated
                     score = 0
-                    d[pcount] = 0 # His score becomes zero
+                    d[pnames[pcount]] = 0 # His score becomes zero
                     print("You rolled a 1 -> Eliminated")
-                    print(f'Your score is : {d[pcount]}')
+                    print(f'Your score is : {d[pnames[pcount]]}')
                     pcount += 1 # Going to the next player
                     break
                 else:
                     print(f'You rolled a {score}')
-                    d[pcount]+= score 
+                    d[pnames[pcount]]+= score 
+                    print(f'Your current score : {d[pnames[pcount]]}')
             
             elif pchoice == 'n': # if the player wants to stop
-                d[pcount]+= score
                 score = 0 # setting the score back to zero for next player
-                print(f"Turn ended, the player scored : {d[pcount]}")
-                if pcount != nplayers:
-                     print("Please pass to the next player")
+                print(f"Turn ended, {pnames[pcount]} scored : {d[pnames[pcount]]}")
                 pcount+=1
+                if pcount< len(pnames):
+                    print(f'Please pass to {pnames[pcount]}')
                 break
     max_score = max(d.values()) # Once the round is finished finding the max score
     for i in range(nplayers):
-        print(f'The player {i+1} scored {d[i]}') # Displaying the player's scores along with the winner
-        if d[i] == max_score:
-             print(f'The player {i+1} has the max score : {d[i]},  is the Winner!!')
+        print(f'The player {pnames[i]} scored {d[pnames[i]]}') # Displaying the player's scores along with the winner
+        if d[pnames[i]] == max_score:
+             print(f'The player {pnames[i]} has the max score : {d[pnames[i]]},  is the Winner!!')
              print()
     count += 1 # Keeps track of the rounds
     pcount = 0 # setting player count to zero for next round
