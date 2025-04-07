@@ -26,11 +26,18 @@ class Player:
         self.scoreInRound = [None] + [0 for i in range(rounds)] # 1 indexed
         player.append(self)
 
-def shuffle(player: list):
+def shuffle():
+    global player
     players = len(player) # number of players
+    print(player)
     playerT = player[1:]  # temporary list of players (0th index will be None)
+    print([p.name for p in playerT])
+    
     random.shuffle(playerT) # shuffle the players
+    print([p.name for p in playerT])
+    
     player = [None]+playerT # Thank you NCR
+    print([p.name for p in playerT],[p.name for p in player[1:]])
 
 def playTurnOf(p: Player):
     assert rounds in range(1,11) , "Rounds should be between 1 and 10"
@@ -44,8 +51,12 @@ def playTurnOf(p: Player):
         if choice.lower() == 'y':
             throw = random.randint(1,6)
             # score update or elimination after throw
-            if throw != 1: p.scoreInRound[r] += throw
-            else: print(f"{p.name} was eliminated after rolling a 1"); return
+            if throw != 1:
+                p.scoreInRound[r] += throw
+                print(f"You rolled {throw}. Current score for round: {p.scoreInRound[r]}")
+                print()
+                
+            else: print(f"{p.name} was eliminated after rolling a 1.\nScore for round{r}: 0"); return
 
         elif choice.lower() == 'n':
             return
@@ -55,7 +66,8 @@ def playTurnOf(p: Player):
 def start():
     global r
     global rounds
-
+    
+    shuffle()
     for i in range(1,rounds+1):
         r+=1
         for p in player[1:]:
@@ -71,9 +83,8 @@ assert rounds in range(1,11), "Rounds should be between 1 and 10"
 players = int(input("Enter number of players: "))
 
 for i in range(1,players+1):
-    player.append(Player(input(f"Enter name of player {i}: ")))
+    Player(input(f"Enter name of player {i}: "))
 
-shuffle(player)
 print([p.name for p in player[1:]]) # print names of players
 start()
 
