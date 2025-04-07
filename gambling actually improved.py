@@ -73,11 +73,10 @@ def start():
     shuffle()
     for i in range(1,rounds+1):
         r+=1
-        for j in range(1,players:
+        for j in range(1,players+1):
             print(f"It's {player[j].name}'s turn")
             print()
             playTurnOf(player[j])
-            print(f"{player[j].name}'s turn is over")
             print()
         
         print(f"Round {r} is over. .\nCurrent round: {r+1}")
