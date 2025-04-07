@@ -59,6 +59,9 @@ def playTurnOf(p: Player):
             else: print(f"{p.name} was eliminated after rolling a 1.\nScore for round{r}: 0"); return
 
         elif choice.lower() == 'n':
+            print()
+            print(f"{p.name}'s turn is over")
+            print()
             return
         else:
             print("Please enter a valid choice")
@@ -70,8 +73,15 @@ def start():
     shuffle()
     for i in range(1,rounds+1):
         r+=1
-        for p in player[1:]:
-            playTurnOf(p)
+        for j in range(1,players:
+            print(f"It's {player[j].name}'s turn")
+            print()
+            playTurnOf(player[j])
+            print(f"{player[j].name}'s turn is over")
+            print()
+        
+        print(f"Round {r} is over. .\nCurrent round: {r+1}")
+        
 
 """
 ---------------------------main/logic---------------------------------------
