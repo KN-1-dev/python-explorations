@@ -106,13 +106,22 @@ p.finalScores = [None] + [s.finalScore for s in player[1:]]
 maxFinalScore = max(p.finalScores[1:])
 
 # find winner
-winner = player[
-        p.finalScores.index(maxFinalScore)
-        ]
+winner = [p in player[1:] if p.score==maxFinalScore]
 
 # print winner
-print(f"'{winner.name}' won the game!")
-print("Congrats","'"+winner.name+"'",", take a look at ur inferiors before starting a new game")
+for w in winner:
+    print(f'{w.name}, ',end='')
+print(f" won the game!")
+print("Congrats ")
+
+def declare():
+    if len(w) > 1:
+        for w in winner[:-2]:
+            print(f'{w.name}, ')
+        print(f'and {winner[-1].name}, ')
+    else:
+        print
+
 
 
 
