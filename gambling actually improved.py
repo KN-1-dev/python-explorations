@@ -29,15 +29,10 @@ class Player:
 def shuffle():
     global player
     players = len(player) # number of players
-    print(player)
     playerT = player[1:]  # temporary list of players (0th index will be None)
-    print([p.name for p in playerT])
-    
     random.shuffle(playerT) # shuffle the players
-    print([p.name for p in playerT])
-    
     player = [None]+playerT # Thank you NCR
-    print([p.name for p in playerT],[p.name for p in player[1:]])
+    print([p.name for p in player[1:]])
 
 def playTurnOf(p: Player):
     assert rounds in range(1,11) , "Rounds should be between 1 and 10"
@@ -61,7 +56,6 @@ def playTurnOf(p: Player):
         elif choice.lower() == 'n':
             print()
             print(f"{p.name}'s turn is over")
-            print()
             return
         else:
             print("Please enter a valid choice")
@@ -74,11 +68,12 @@ def start():
     for i in range(1,rounds+1):
         r+=1
         for j in range(1,players+1):
-            print(f"It's {player[j].name}'s turn")
             print()
+            p = player[j]
+            print(f"It's {p.name}'s turn")
             playTurnOf(player[j])
             print(f"{p.name}'s score for this round: {p.scoreInRound[r]}")
-        
+            print()
         print(f"Round {r} is over. .\nCurrent round: {r+1}")
         
 
@@ -106,18 +101,18 @@ for p in player[1:]:
     print()
     
 # find maximum / winner's score
-p.finalScores = [None] + [s.finalScore for s in player]
+p.finalScores = [None] + [s.finalScore for s in player[1:]]
 
-maxFinalScore = max(p.finalScores)
+maxFinalScore = max(p.finalScores[1:])
 
 # find winner
 winner = player[
-        p.finalScores.find(maxFinalScore)
+        p.finalScores.index(maxFinalScore)
         ]
 
 # print winner
-print(winner.name,"won the game!")
-print("Congrats",winner.name,"take a look at ur inferiors before starting a new game")
+print(f"'{winner.name}' won the game!")
+print("Congrats","'"+winner.name+"'",", take a look at ur inferiors before starting a new game")
 
 
 
