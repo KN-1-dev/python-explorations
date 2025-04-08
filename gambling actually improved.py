@@ -111,17 +111,13 @@ p.finalScores = [None] + [s.finalScore for s in player]
 maxFinalScore = max(p.finalScores)
 
 # find winner
-player[
+winner = player[
         p.finalScores.find(maxFinalScore)
         ]
 
 # print winner
-print(
-    player[
-        p.finalScores.find(maxFinalScore)
-        ],"won the game!"
-    )
-print
+print(winner.name,"won the game!")
+print("Congrats",winner.name,"take a look at ur inferiors before starting a new game")
 
 
 
