@@ -77,7 +77,7 @@ def start():
             print(f"It's {player[j].name}'s turn")
             print()
             playTurnOf(player[j])
-            print()
+            print(f"{p.name}'s score for this round: {p.scoreInRound[r]}")
         
         print(f"Round {r} is over. .\nCurrent round: {r+1}")
         
@@ -100,6 +100,31 @@ start()
 for p in player[1:]:
     p.finalScore = sum(p.scoreInRound[1:])
 
+print("\n\n")
 for p in player[1:]:
     print(f"{p.name} scored {p.finalScore} in total")
     print()
+    
+# find maximum / winner's score
+p.finalScores = [None] + [s.finalScore for s in player]
+
+maxFinalScore = max(p.finalScores)
+
+# find winner
+player[
+        p.finalScores.find(maxFinalScore)
+        ]
+
+# print winner
+print(
+    player[
+        p.finalScores.find(maxFinalScore)
+        ],"won the game!"
+    )
+print
+
+
+
+
+
+
